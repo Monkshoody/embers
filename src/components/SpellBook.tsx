@@ -216,7 +216,7 @@ export default function SpellBook() {
             return;
         }
 
-        /*async function loadExternalSpellbook() {
+        async function loadExternalSpellbook() {
             const metadata = await OBR.player.getMetadata();
             const externalSpellbook = metadata?.[EXTERNAL_SPELLBOOK_KEY];
 
@@ -232,10 +232,12 @@ export default function SpellBook() {
             }
         }
 
-        loadExternalSpellbook();*/
+        loadExternalSpellbook();
 
-        return OBR.player.onMetadataChange((metadata) => {
+        return OBR.room.onMetadataChange(async () => {
+            const metadata = await OBR.player.getMetadata();
             const externalSpellbook = metadata?.[EXTERNAL_SPELLBOOK_KEY];
+
             if (externalSpellbook) {
                 const verified = verifyGroups(externalSpellbook);
                 if (verified) {
