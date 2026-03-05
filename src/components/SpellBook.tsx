@@ -47,6 +47,7 @@ type ModalType =
     | "delete-spell"
     | "change-group-name";
 export const playerMetadataSpellbookKey = `${APP_KEY}/spellbook`;
+const EXTERNAL_SPELLBOOK_KEY = "magician/spellbook";
 
 function verifyGroups(json: unknown): Record<string, string[]> | null {
     if (typeof json !== "object" || Array.isArray(json) || json == null) {
@@ -209,6 +210,38 @@ export default function SpellBook() {
         const spellBook = JSON.parse(spellbookJSON ?? "{}");
         _setGroups(spellBook);
     }, [obr.ready, setGroups]);
+
+    useEffect(() => {
+        if (!obr.ready) return;
+
+        async function loadExternalSpellbook() {
+            const metadata = await OBR.player.getMetadata();
+            const externalSpellbook = metadata?.[EXTERNAL_SPELLBOOK_KEY];
+
+            if (externalSpellbook) {
+                const verified = verifyGroups(externalSpellbook);
+                if (verified) {
+                    setGroups(verified);
+                    OBR.notification.show(
+                        "Spellbook synced from Character Sheet",
+                        "SUCCESS"
+                    );
+                }
+            }
+        }
+
+        loadExternalSpellbook();
+
+        return OBR.player.onMetadataChange((metadata) => {
+            const externalSpellbook = metadata?.[EXTERNAL_SPELLBOOK_KEY];
+            if (externalSpellbook) {
+                const verified = verifyGroups(externalSpellbook);
+                if (verified) {
+                    setGroups(verified);
+                }
+            }
+        });
+    }, [obr.ready]);
 
     useEffect(() => {
         if (!obr.ready || !obr.player?.role) {
