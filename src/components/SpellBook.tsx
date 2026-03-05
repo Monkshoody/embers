@@ -47,7 +47,7 @@ type ModalType =
     | "delete-spell"
     | "change-group-name";
 export const playerMetadataSpellbookKey = `${APP_KEY}/spellbook`;
-const EXTERNAL_SPELLBOOK_KEY = "magician/spellbook";
+//const EXTERNAL_SPELLBOOK_KEY = "magician/spellbook";
 
 function verifyGroups(json: unknown): Record<string, string[]> | null {
     if (typeof json !== "object" || Array.isArray(json) || json == null) {
@@ -211,7 +211,7 @@ export default function SpellBook() {
         _setGroups(spellBook);
     }, [obr.ready, setGroups]);
 
-    useEffect(() => {
+    /*useEffect(() => {
         if (!obr.ready) return;
 
         async function loadExternalSpellbook() {
@@ -241,7 +241,7 @@ export default function SpellBook() {
                 }
             }
         });
-    }, [obr.ready]);
+    }, [obr.ready]);*/
 
     useEffect(() => {
         if (!obr.ready || !obr.player?.role) {
