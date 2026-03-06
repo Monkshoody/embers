@@ -90,7 +90,7 @@ export default function SpellSelectionPopover() {
     const [search, setSearch] = useState("");
     const [sortedSpellsList, setSortedSpellsList] = useState<string[]>([]);
     const [isGM, setIsGM] = useState(false);
-    const [allowedSpellIDs, setAllowedSpellIDs] = useState<string[]>([]);
+    const [setAllowedSpellIDs] = useState<string[]>([]);
     const EXTERNAL_SPELLBOOK_KEY = "magician/spellbook";
 
     useEffect(() => {
@@ -106,39 +106,35 @@ export default function SpellSelectionPopover() {
     }, [obr.ready, obr.player?.role, isGM]);
 
     useEffect(() => {
-        if (!obr.ready || !obr.sceneReady) {
-            return;
-        }
+        if (!obr.ready || !obr.sceneReady) return;
 
-        getSortedSpellsList().then(list => {
-            if (isGM) {
+        async function loadSpells() {
+            const list = await getSortedSpellsList();
+
+            if (obr.player?.role === "GM") {
                 setSortedSpellsList(list);
                 return;
             }
-            const filtered = list.filter((spellId: string) =>
-                allowedSpellIDs.includes(`${spellId}`)
-            );
-            console.log("filtered", filtered);
-            setSortedSpellsList(filtered);
-        });
-    }, [obr.ready, obr.sceneReady, isGM, allowedSpellIDs]);
 
-    useEffect(() => {
-        if (!obr.ready) return;
-
-        if (isGM) {
-            setAllowedSpellIDs([]);
-            return;
-        }
-
-        OBR.player.getMetadata().then((metadata: Record<string, unknown>) => {
+            const metadata = await OBR.player.getMetadata() as Record<string, unknown>;
             const spellbook = metadata[EXTERNAL_SPELLBOOK_KEY] ?? {};
             console.log("spellbook", spellbook);
+
             const ids = Object.values(spellbook).flat() as string[];
             console.log("ids", ids);
+
+            const filtered = list.filter((spellId: string) =>
+                ids.includes(`${spellId}`)
+            );
+            console.log("filtered", filtered);
+
             setAllowedSpellIDs(ids);
-        });
-    }, [obr.ready, isGM]);
+            setSortedSpellsList(filtered);
+        }
+
+        loadSpells();
+
+    }, [obr.ready, obr.sceneReady]);
 
     if (!obr.ready) {
         return null;
