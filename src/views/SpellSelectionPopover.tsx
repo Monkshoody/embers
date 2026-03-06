@@ -118,6 +118,7 @@ export default function SpellSelectionPopover() {
             const filtered = list.filter((spellId: string) =>
                 allowedSpellIDs.includes(`$.${spellId}`)
             );
+            console.log("filtered", filtered);
             setSortedSpellsList(filtered);
         });
     }, [obr.ready, obr.sceneReady, isGM, allowedSpellIDs]);
@@ -132,8 +133,9 @@ export default function SpellSelectionPopover() {
 
         OBR.player.getMetadata().then((metadata: Record<string, unknown>) => {
             const spellbook = metadata[EXTERNAL_SPELLBOOK_KEY] ?? {};
-
+            console.log("spellbook", spellbook);
             const ids = Object.values(spellbook).flat() as string[];
+            console.log("ids", ids);
             setAllowedSpellIDs(ids);
         });
     }, [obr.ready, isGM]);
