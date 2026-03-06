@@ -350,22 +350,6 @@ export default function SpellBook() {
                         </IconButton>
                     </Tooltip>
                 )}
-                {!isGM && (
-                    <Tooltip title="Sync spells from Character Sheet">
-                        <IconButton
-                            className="clickable"
-                            size="small"
-                            onClick={async () => {
-                                await OBR.broadcast.sendMessage("magician/sync-request", {
-                                    playerId: OBR.player.id
-                                });
-                                OBR.notification.show("Sync request sent to Character Sheet", "INFO");
-                            }}
-                        >
-                            <FaRepeat />
-                        </IconButton>
-                    </Tooltip>
-                )}
             </Box>
             {Object.entries(groups).map(([groupName, spells], index) => (
                 <Accordion variant="outlined" defaultExpanded key={index}>
