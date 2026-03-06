@@ -126,9 +126,10 @@ export default function SpellSelectionPopover() {
             console.log("ids", ids);
 
             const filtered = list.filter((spellId: string) =>
-                allowedSpellIDs.includes(`${spellId}`)
+                ids.includes(`${spellId}`)
             );
             console.log("filtered", filtered);
+            console.log("allowedSpellIDs", allowedSpellIDs);
 
             setAllowedSpellIDs(ids);
             setSortedSpellsList(filtered);
