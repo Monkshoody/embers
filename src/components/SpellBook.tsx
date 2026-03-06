@@ -264,10 +264,6 @@ export default function SpellBook() {
             return;
         }
 
-        if (!isGM && allSpellIDs.length === 0) {
-            return <Typography>No spells available.</Typography>;
-        }
-
         //getAllSpellNames().then((names) => setAllSpellIDs(names));
         if (isGM) {
             getAllSpellNames().then((names) => setAllSpellIDs(names));
