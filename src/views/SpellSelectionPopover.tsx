@@ -113,6 +113,7 @@ export default function SpellSelectionPopover() {
 
             if (obr.player?.role === "GM") {
                 setSortedSpellsList(list);
+                setAllowedSpellIDs([]);
                 return;
             }
 
@@ -124,7 +125,7 @@ export default function SpellSelectionPopover() {
             console.log("ids", ids);
 
             const filtered = list.filter((spellId: string) =>
-                ids.includes(`${spellId}`)
+                allowedSpellIDs.includes(`${spellId}`)
             );
             console.log("filtered", filtered);
 
