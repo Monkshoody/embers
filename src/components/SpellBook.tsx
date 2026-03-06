@@ -264,23 +264,10 @@ export default function SpellBook() {
             return;
         }
 
-        if (!isGM && allSpellIDs.length === 0) {
-            return <Typography>No spells available.</Typography>;
-        }
-
-        //getAllSpellNames().then((names) => setAllSpellIDs(names));
-        if (isGM) {
-            getAllSpellNames().then((names) => setAllSpellIDs(names));
-        } else {
-            setAllSpellIDs(getSpellIDsFromGroups(groups));
-        }
+        getAllSpellNames().then((names) => setAllSpellIDs(names));
+        
         return OBR.scene.onMetadataChange(() => {
-            //getAllSpellNames().then((names) => setAllSpellIDs(names));
-            if (isGM) {
-                getAllSpellNames().then((names) => setAllSpellIDs(names));
-            } else {
-                setAllSpellIDs(getSpellIDsFromGroups(groups));
-            }
+            getAllSpellNames().then((names) => setAllSpellIDs(names));
         });
     }, [obr.ready, obr.sceneReady]);
 
