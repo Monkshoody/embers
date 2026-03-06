@@ -90,7 +90,6 @@ export default function SpellSelectionPopover() {
     const [search, setSearch] = useState("");
     const [sortedSpellsList, setSortedSpellsList] = useState<string[]>([]);
     const [isGM, setIsGM] = useState(false);
-    const [allowedSpellIDs, setAllowedSpellIDs] = useState<string[]>([]);
     const EXTERNAL_SPELLBOOK_KEY = "magician/spellbook";
 
     useEffect(() => {
@@ -113,25 +112,17 @@ export default function SpellSelectionPopover() {
 
             if (obr.player?.role === "GM") {
                 setSortedSpellsList(list);
-                setAllowedSpellIDs([]);
                 return;
             }
 
             const metadata = await OBR.player.getMetadata() as Record<string, unknown>;
-            console.log("metadata", metadata);
             const spellbook = metadata[EXTERNAL_SPELLBOOK_KEY] ?? {};
-            console.log("spellbook", spellbook);
 
             const ids = Object.values(spellbook).flat() as string[];
-            console.log("ids", ids);
 
             const filtered = list.filter((spellId: string) =>
                 ids.includes(`${spellId}`)
             );
-            console.log("filtered", filtered);
-            console.log("allowedSpellIDs", allowedSpellIDs);
-
-            setAllowedSpellIDs(ids);
             setSortedSpellsList(filtered);
         }
 
