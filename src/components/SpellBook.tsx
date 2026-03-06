@@ -66,10 +66,6 @@ function verifyGroups(json: unknown): Record<string, string[]> | null {
     return json as Record<string, string[]>;
 }
 
-function getSpellIDsFromGroups(groups: Record<string, string[]>) {
-    return Object.values(groups).flat();
-}
-
 export default function SpellBook() {
     const obr = useOBR();
     const [groups, _setGroups] = useState<Record<string, string[]>>({});
@@ -265,7 +261,7 @@ export default function SpellBook() {
         }
 
         getAllSpellNames().then((names) => setAllSpellIDs(names));
-        
+
         return OBR.scene.onMetadataChange(() => {
             getAllSpellNames().then((names) => setAllSpellIDs(names));
         });
