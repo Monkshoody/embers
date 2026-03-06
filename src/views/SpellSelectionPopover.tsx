@@ -12,7 +12,6 @@ import { useOBR } from "../react-obr/providers";
 
 export const spellPopoverId = `${APP_KEY}/spell-popover`;
 export const mostRecentEffectsMetadataKey = `${APP_KEY}/most-recent-effects`;
-type Spellbook = Record<string, string[]>;
 
 async function selectSpell(spellName: string) {
     // Update recent spells list
@@ -118,7 +117,7 @@ export default function SpellSelectionPopover() {
             }
 
             const metadata = await OBR.player.getMetadata() as Record<string, unknown>;
-            const spellbook = (metadata[EXTERNAL_SPELLBOOK_KEY] ?? {}) as Spellbook;
+            const spellbook = (metadata[EXTERNAL_SPELLBOOK_KEY] ?? {}) as Record<string, string[]>;
             console.log("spellbook", spellbook);
 
             const ids = Object.values(spellbook).flat();
