@@ -355,10 +355,12 @@ export default function SpellBook() {
                         <IconButton
                             className="clickable"
                             size="small"
-                            onClick={() => {
-                                OBR.broadcast.sendMessage("magician/sync-request", {
+                            onClick={async () => {
+                                console.log("Sending sync request");
+                                await OBR.broadcast.sendMessage("magician/sync-request", {
                                     playerId: OBR.player.id
                                 });
+                                console.log("Message sent");
                                 OBR.notification.show("Sync request sent to Character Sheet", "INFO");
                             }}
                         >
