@@ -90,6 +90,8 @@ export default function SpellSelectionPopover() {
     const [search, setSearch] = useState("");
     const [sortedSpellsList, setSortedSpellsList] = useState<string[]>([]);
     const [isGM, setIsGM] = useState(false);
+    const [allowedSpellIDs, setAllowedSpellIDs] = useState<string[]>([]);
+    const EXTERNAL_SPELLBOOK_KEY = "magician/spellbook";
 
     useEffect(() => {
         if (!obr.ready || !obr.player?.role) {
@@ -108,8 +110,33 @@ export default function SpellSelectionPopover() {
             return;
         }
 
-        getSortedSpellsList().then(list => setSortedSpellsList(list));
-    }, [obr.ready, obr.sceneReady]);
+        getSortedSpellsList().then(list => {
+            if (isGM) {
+                setSortedSpellsList(list);
+                return;
+            }
+            const filtered = list.filter((spellId: string) =>
+                allowedSpellIDs.includes(`${spellId}`)
+            );
+            setSortedSpellsList(filtered);
+        });
+    }, [obr.ready, obr.sceneReady, isGM, allowedSpellIDs]);
+
+    useEffect(() => {
+        if (!obr.ready) return;
+
+        if (isGM) {
+            setAllowedSpellIDs([]);
+            return;
+        }
+
+        OBR.player.getMetadata().then((metadata: Record<string, unknown>) => {
+            const spellbook = metadata[EXTERNAL_SPELLBOOK_KEY] ?? {};
+
+            const ids = Object.values(spellbook).flat() as string[];
+            setAllowedSpellIDs(ids);
+        });
+    }, [obr.ready, isGM]);
 
     if (!obr.ready) {
         return null;
