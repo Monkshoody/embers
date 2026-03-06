@@ -116,7 +116,7 @@ export default function SpellSelectionPopover() {
                 return;
             }
             const filtered = list.filter((spellId: string) =>
-                allowedSpellIDs.includes(`${spellId}`)
+                allowedSpellIDs.includes(`$.${spellId}`)
             );
             setSortedSpellsList(filtered);
         });
