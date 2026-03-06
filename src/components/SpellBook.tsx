@@ -235,7 +235,7 @@ export default function SpellBook() {
             }
         }
 
-        loadExternalSpellbook();
+        loadExternalSpellbook(); //force sync
 
         return OBR.room.onMetadataChange(async () => {
             const metadata = await OBR.player.getMetadata();
