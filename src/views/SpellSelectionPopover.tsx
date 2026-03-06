@@ -118,6 +118,7 @@ export default function SpellSelectionPopover() {
             }
 
             const metadata = await OBR.player.getMetadata() as Record<string, unknown>;
+            console.log("metadata", metadata);
             const spellbook = metadata[EXTERNAL_SPELLBOOK_KEY] ?? {};
             console.log("spellbook", spellbook);
 
