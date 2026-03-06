@@ -338,7 +338,7 @@ export default function SpellBook() {
                         </IconButton>
                     </Tooltip>
                 )}
-                {!editing && (
+                {!editing && isGM &&(
                     <Tooltip title="Edit your spellbook">
                         <IconButton
                             className="clickable"
@@ -346,6 +346,22 @@ export default function SpellBook() {
                             onClick={() => setEditing(true)}
                         >
                             <FaPencil />
+                        </IconButton>
+                    </Tooltip>
+                )}
+                {!isGM && (
+                    <Tooltip title="Sync spells from Character Sheet">
+                        <IconButton
+                            className="clickable"
+                            size="small"
+                            onClick={() => {
+                                OBR.broadcast.sendMessage("magician/sync-request", {
+                                    playerId: OBR.player.id
+                                });
+                                OBR.notification.show("Sync request sent to Character Sheet", "INFO");
+                            }}
+                        >
+                            <FaDownload />
                         </IconButton>
                     </Tooltip>
                 )}
