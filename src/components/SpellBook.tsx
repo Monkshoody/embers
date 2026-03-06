@@ -261,7 +261,7 @@ export default function SpellBook() {
         }
 
         getAllSpellNames().then((names) => setAllSpellIDs(names));
-        
+
         return OBR.scene.onMetadataChange(() => {
             getAllSpellNames().then((names) => setAllSpellIDs(names));
         });
@@ -327,7 +327,7 @@ export default function SpellBook() {
                         </Tooltip>
                     </>}
                 </Typography>
-                {editing && isGM (
+                {editing && (
                     <Tooltip title="Save changes">
                         <IconButton
                             className="clickable"
@@ -338,7 +338,7 @@ export default function SpellBook() {
                         </IconButton>
                     </Tooltip>
                 )}
-                {!editing && isGM (
+                {!editing && (
                     <Tooltip title="Edit your spellbook">
                         <IconButton
                             className="clickable"
