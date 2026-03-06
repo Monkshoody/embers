@@ -30,6 +30,7 @@ import {
     FaPencil,
     FaTrash,
     FaUpload,
+    FaRepeat,
 } from "react-icons/fa6";
 import OBR, { Theme } from "@owlbear-rodeo/sdk";
 import { downloadFileFromString, loadJSONFile } from "../utils";
@@ -361,7 +362,7 @@ export default function SpellBook() {
                                 OBR.notification.show("Sync request sent to Character Sheet", "INFO");
                             }}
                         >
-                            <FaDownload />
+                            <FaRepeat />
                         </IconButton>
                     </Tooltip>
                 )}
