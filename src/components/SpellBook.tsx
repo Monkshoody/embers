@@ -223,11 +223,14 @@ export default function SpellBook() {
             if (externalSpellbook) {
                 const verified = verifyGroups(externalSpellbook);
                 if (verified) {
-                    setGroups(verified);
-                    OBR.notification.show(
-                        "Spellbook synced from Character Sheet",
-                        "SUCCESS"
-                    );
+                    const changed = JSON.stringify(verified) !== JSON.stringify(groups);
+                    if (changed) {
+                        setGroups(verified);
+                        OBR.notification.show(
+                            "Spellbook synced from Character Sheet",
+                            "SUCCESS"
+                        );
+                    }
                 }
             }
         }
@@ -241,11 +244,14 @@ export default function SpellBook() {
             if (externalSpellbook) {
                 const verified = verifyGroups(externalSpellbook);
                 if (verified) {
-                    setGroups(verified);
+                    const changed = JSON.stringify(verified) !== JSON.stringify(groups);
+                    if (changed) {
+                        setGroups(verified);
+                    }
                 }
             }
         });
-    }, [obr.ready]);
+    }, [obr.ready, groups]);
 
     useEffect(() => {
         if (!obr.ready || !obr.player?.role) {
