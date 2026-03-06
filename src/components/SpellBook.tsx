@@ -226,16 +226,12 @@ export default function SpellBook() {
                     const changed = JSON.stringify(verified) !== JSON.stringify(groups);
                     if (changed) {
                         setGroups(verified);
-                        OBR.notification.show(
-                            "Spellbook synced from Character Sheet",
-                            "SUCCESS"
-                        );
                     }
                 }
             }
         }
 
-        loadExternalSpellbook(); //force sync
+        loadExternalSpellbook();
 
         return OBR.room.onMetadataChange(async () => {
             const metadata = await OBR.player.getMetadata();
