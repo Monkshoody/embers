@@ -29,8 +29,7 @@ import {
     FaFloppyDisk,
     FaPencil,
     FaTrash,
-    FaUpload,
-    FaRepeat,
+    FaUpload
 } from "react-icons/fa6";
 import OBR, { Theme } from "@owlbear-rodeo/sdk";
 import { downloadFileFromString, loadJSONFile } from "../utils";
