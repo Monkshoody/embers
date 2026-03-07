@@ -1,5 +1,5 @@
 {
-    "alohomora_(maxima)": {
+    "alohomora": {
         "name": "Alohomora (Maxima)",
         "minTargets": 1,
         "thumbnail": "Generic/Magic_Signs/Abjuration_01_Blue_Circle_Thumb.webp",
@@ -130,7 +130,7 @@
             }
         ]
     },
-    "lumos_(maxima)": {
+    "lumos": {
         "name": "Lumos (Maxima)",
         "minTargets": 1,
         "thumbnail": "Generic/Marker/MarkerLight_01_Regular_Blue_Thumb.webp",
@@ -391,7 +391,7 @@
             }
         ]
     },
-    "ventus_(maxima)": {
+    "ventus": {
         "name": "Ventus (Maxima)",
         "minTargets": 2,
         "maxTargets": 2,
@@ -445,7 +445,7 @@
             }
         ]
     },
-    "verdimillious_(maxima)": {
+    "verdimillious": {
         "name": "Verdimillious (Maxima)",
         "minTargets": 2,
         "thumbnail": "Generic/Energy/EnergyBeam_01_Regular_Blue_Thumb.webp",
@@ -625,7 +625,7 @@
             }
         ]
     },
-    "fumos_(maxima)": {
+    "fumos": {
         "name": "Fumos (Maxima)",
         "minTargets": 1,
         "thumbnail": "Generic/Smoke/Fumes_02_Steam_White_Thumb.webp",
@@ -654,7 +654,7 @@
             }
         ]
     },
-    "incendio_(maxima)": {
+    "incendio": {
         "name": "Incendio (Maxima)",
         "minTargets": 2,
         "thumbnail": "Generic/Fire/Flame/Flames_01_Regular_Orange_Thumb.webp",
@@ -733,7 +733,7 @@
             }
         ]
     },
-    "pereo_(maxima)": {
+    "pereo": {
         "name": "Pereo (Maxima)",
         "minTargets": 1,
         "thumbnail": "Generic/Impact/ImpactWater02_01_Regular_Blue_Thumb.webp",
@@ -761,7 +761,7 @@
             }
         ]
     },
-    "protego_(maxima)": {
+    "protego": {
         "name": "Protego (Maxima)",
         "minTargets": 1,
         "thumbnail": "Generic/Energy/ShieldEldritchWebAbove01_01_Dark_Purple_Thumb.webp",
@@ -971,7 +971,7 @@
             }
         ]
     },
-    "aguamenti_(maxima)": {
+    "aguamenti": {
         "name": "Aguamenti (Maxima)",
         "minTargets": 2,
         "thumbnail": "Generic/Weapon_Attacks/Ranged/ProjectileIceShard01_01_Regular_Blue_Thumb.webp",
@@ -1121,7 +1121,7 @@
             }
         ]
     },
-    "orbis_(maxima)": {
+    "orbis": {
         "name": "Orbis (Maxima)",
         "minTargets": 1,
         "thumbnail": "Generic/Template/Circle/Aura/Aura01_01_Regular_BluePurple_Thumb.webp",
@@ -1801,7 +1801,7 @@
             }
         ]
     },
-    "nebulus_(maxima)": {
+    "nebulus": {
         "name": "Nebulus (Maxima)",
         "minTargets": 1,
         "thumbnail": "1st_Level/Fog_Cloud/FogCloud_01_White_Thumb.webp",
@@ -2994,7 +2994,7 @@
             }
         ]
     },
-    "piertotum_locomotor_(maxima)": {
+    "piertotum_locomotor": {
         "name": "Piertotum Locomotor (Maxima)",
         "minTargets": 1,
         "thumbnail": "2nd_Level/Spiritual_Weapon/SpiritualWeapon_GreatAxe01_02_Spectral_Green_Thumb.webp",
@@ -3168,7 +3168,7 @@
             }
         ]
     },
-    "glacius_(maxima)": {
+    "glacius": {
         "name": "Glacius (Maxima)",
         "minTargets": 2,
         "thumbnail": "Generic/Ice/SnowflakeBurst_01_Regular_BlueWhite_Burst_Thumb.webp",
@@ -3286,7 +3286,7 @@
             }
         ]
     },
-    "confundo_(maxima)": {
+    "confundo": {
         "name": "Confundo (Maxima)",
         "minTargets": 1,
         "thumbnail": "Generic/Conditions/Curse01/ConditionCurse01_016_Red_Thumb.webp",
@@ -3459,7 +3459,7 @@
             }
         ]
     },
-    "bombarda_(maxima)": {
+    "bombarda": {
         "name": "Bombarda (Maxima)",
         "minTargets": 2,
         "thumbnail": "3rd_Level/Fireball/FireballExplosion_01_Orange_Thumb.webp",
@@ -3626,7 +3626,7 @@
             }
         ]
     },
-    "flipendo_(maxima)": {
+    "flipendo": {
         "name": "Flipendo (Maxima)",
         "minTargets": 2,
         "thumbnail": "Generic/Weapon_Attacks/Ranged/Missile01_01_Regular_Blue_Thumb.webp",
@@ -3797,7 +3797,7 @@
             }
         ]
     },
-    "animo_virtus_(maxima)": {
+    "animo_virtus": {
         "name": "Animo Virtus (Maxima)",
         "minTargets": 1,
         "thumbnail": "Generic/Conditions/Boon01/ConditionBoon01_002_Green_Thumb.webp",
@@ -3817,7 +3817,7 @@
             }
         ]
     },
-    "animo_desperatio_(maxima)": {
+    "animo_desperatio": {
         "name": "Animo Desperatio (Maxima)",
         "minTargets": 1,
         "thumbnail": "Generic/Conditions/Curse01/ConditionCurse01_019_Red_Thumb.webp",
@@ -4285,7 +4285,7 @@
             }
         ]
     },
-    "baubillious_(maxima)": {
+    "baubillious": {
         "name": "Baubillious (Maxima)",
         "minTargets": 2,
         "thumbnail": "Generic/Lightning/LightningStrike01_01_Regular_Blue_Thumb.webp",
