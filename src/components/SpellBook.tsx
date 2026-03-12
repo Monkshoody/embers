@@ -238,13 +238,11 @@ export default function SpellBook() {
             const externalSpellbook = metadata?.[EXTERNAL_SPELLBOOK_KEY];
 
             if (externalSpellbook) {
-                const verified = verifyGroups(externalSpellbook);
-                if (verified) {
-                    let changed = true;
-                    if (changed) {
-                        setGroups(verified);
-                        changed = false;
-                    }
+                const verified = verifyGroups(externalSpellbook);,
+                let changed = true;
+                if (verified && changed) {
+                    changed = false;
+                    setGroups(verified);
                 }
             }
         });
