@@ -239,10 +239,11 @@ export default function SpellBook() {
 
             if (externalSpellbook) {
                 const verified = verifyGroups(externalSpellbook);,
-                let changed = true;
-                if (verified && changed) {
-                    changed = false;
-                    setGroups(verified);
+                if (verified) {
+                    const changed = JSON.stringify(verified) !== JSON.stringify(groups);
+                    if (changed) {
+                        setGroups(verified);
+                    }
                 }
             }
         });
