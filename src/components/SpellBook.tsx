@@ -240,9 +240,10 @@ export default function SpellBook() {
             if (externalSpellbook) {
                 const verified = verifyGroups(externalSpellbook);
                 if (verified) {
-                    const changed = JSON.stringify(verified) !== JSON.stringify(groups);
+                    let changed = true;
                     if (changed) {
                         setGroups(verified);
+                        changed = false;
                     }
                 }
             }
