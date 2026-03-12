@@ -20,6 +20,15 @@ import { getSpell } from "../../effects/spells";
 import { toolMetadataSelectedSpell } from "../../effectsTool";
 import { useOBR } from "../../react-obr/providers";
 
+type ExternalSpell = {
+  Reichweite?: string;
+  ZSG?: string;
+  Mana?: string;
+  ZauberArt?: string[];
+  Schaden?: string;
+  Wirkung?: string[];
+};
+
 function replicationValue(replicationValue: ReplicationType) {
     if (replicationValue === "no") {
         return "None";
@@ -202,6 +211,9 @@ export default function SpellDetails() {
     const [selectedSpell, setSelectedSpell] = useState<Spell>();
     const [isGM, setIsGM] = useState(false);
 
+    const [externalSpell, setExternalSpell] = useState<ExternalSpell | null>(null);
+    const [allSpells, setAllSpells] = useState<ExternalSpell[]>([]);
+
     useEffect(() => {
         if (!obr.ready || !obr.player?.role) {
             return;
@@ -212,6 +224,12 @@ export default function SpellDetails() {
             setIsGM(true);
         }
     }, [obr.ready, obr.player?.role, isGM]);
+
+    useEffect(() => {
+    fetch("https://hogwartsshops.pages.dev/spells.json")
+        .then((res) => res.json())
+        .then(setAllSpells);
+    }, []);
 
     useEffect(() => {
         if (!obr.ready) {
@@ -231,6 +249,16 @@ export default function SpellDetails() {
 
         return OBR.player.onChange((player) => setSelected(player.metadata));
     }, [obr.ready, isGM]);
+
+    useEffect(() => {
+        if (!selectedSpellID) return;
+
+        const spell = allSpells.find(
+            (s: any) => s.embersSpellId === selectedSpellID
+        );
+
+        setExternalSpell(spell ?? null);
+    }, [selectedSpellID, allSpells]);
 
     return (
         <Box>
@@ -324,6 +352,36 @@ export default function SpellDetails() {
                                 label="Copy mode"
                                 value={copyValue(selectedSpell.copy)}
                             />
+                        )}
+                        {externalSpell?.Reichweite && (
+                            <DetailRow 
+                            label="Reichweite" 
+                            value={externalSpell.Reichweite} />
+                        )}
+                        {externalSpell?.ZSG && (
+                            <DetailRow 
+                            label="ZSG" 
+                            value={externalSpell.ZSG} />
+                        )}
+                        {externalSpell?.Mana && (
+                            <DetailRow 
+                            label="Mana" 
+                            value={externalSpell.Mana} />
+                        )}
+                        {externalSpell?.ZauberArt && (
+                            <DetailRow 
+                            label="ZauberArt" 
+                            value={externalSpell.ZauberArt.join(", ")} />
+                        )}
+                        {externalSpell?.Schaden && (
+                            <DetailRow 
+                            label="Schaden" 
+                            value={externalSpell.Schaden} />
+                        )}
+                        {externalSpell?.Wirkung && (
+                            <DetailRow 
+                            label="Wirkung" 
+                            value={externalSpell.Wirkung.join(", ")} />
                         )}
                         {selectedSpellID &&
                             selectedSpell.parameters &&
