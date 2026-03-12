@@ -373,6 +373,11 @@ export default function SpellDetails() {
                             label="ZauberArt" 
                             value={externalSpell.ZauberArt.join(", ")} />
                         )}
+                        {externalSpell?.Heilung && (
+                            <DetailRow 
+                            label="Heilung" 
+                            value={externalSpell.Heilung} />
+                        )}
                         {externalSpell?.Schaden && (
                             <DetailRow 
                             label="Schaden" 
