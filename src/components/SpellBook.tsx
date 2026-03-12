@@ -211,43 +211,34 @@ export default function SpellBook() {
         _setGroups(spellBook);
     }, [obr.ready, setGroups]);
 
+    const lastImportedSpellbook = useRef<string | null>(null);
+
     useEffect(() => {
-        if (!obr.ready) {
-            return;
-        }
+        if (!obr.ready) return;
 
         async function loadExternalSpellbook() {
             const metadata = await OBR.player.getMetadata();
             const externalSpellbook = metadata?.[EXTERNAL_SPELLBOOK_KEY];
 
-            if (externalSpellbook) {
-                const verified = verifyGroups(externalSpellbook);
-                if (verified) {
-                    const changed = JSON.stringify(verified) !== JSON.stringify(groups);
-                    if (changed) {
-                        setGroups(verified);
-                    }
-                }
+            if (!externalSpellbook) return;
+
+            const verified = verifyGroups(externalSpellbook);
+            if (!verified) return;
+
+            const serialized = JSON.stringify(verified);
+
+            if (serialized !== lastImportedSpellbook.current) {
+                lastImportedSpellbook.current = serialized;
+                setGroups(verified);
             }
         }
 
         loadExternalSpellbook();
 
-        return OBR.room.onMetadataChange(async () => {
-            const metadata = await OBR.player.getMetadata();
-            const externalSpellbook = metadata?.[EXTERNAL_SPELLBOOK_KEY];
-
-            if (externalSpellbook) {
-                const verified = verifyGroups(externalSpellbook);
-                if (verified) {
-                    const changed = JSON.stringify(verified) !== JSON.stringify(groups);
-                    if (changed) {
-                        setGroups(verified);
-                    }
-                }
-            }
+        return OBR.room.onMetadataChange(() => {
+            loadExternalSpellbook();
         });
-    }, [obr.ready, groups]);
+    }, [obr.ready]);
 
     useEffect(() => {
         if (!obr.ready || !obr.player?.role) {
