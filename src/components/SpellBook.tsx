@@ -238,7 +238,7 @@ export default function SpellBook() {
             const externalSpellbook = metadata?.[EXTERNAL_SPELLBOOK_KEY];
 
             if (externalSpellbook) {
-                const verified = verifyGroups(externalSpellbook);,
+                const verified = verifyGroups(externalSpellbook);
                 if (verified) {
                     const changed = JSON.stringify(verified) !== JSON.stringify(groups);
                     if (changed) {
