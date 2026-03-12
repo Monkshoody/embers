@@ -27,6 +27,7 @@ type ExternalSpell = {
   ZauberArt?: string[];
   Schaden?: string;
   Wirkung?: string[];
+  Heilung?: string;
 };
 
 function replicationValue(replicationValue: ReplicationType) {
