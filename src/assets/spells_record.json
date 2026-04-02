@@ -490,29 +490,30 @@
         }]
         
     },
-    "expelliarmus_(entwaffnen)": {
-        "name": "Expelliarmus (entwaffnen)",
-        "minTargets": 2,
-        "thumbnail": "Generic/Weapon_Attacks/Ranged/Missile01_01_Regular_Blue_Thumb.webp",
-        "replicate": "first_to_all",
-        "copy": 200,
-        "parameters": [],
-        "blueprints": [
-            {
-                "type": "effect",
-                "id": "generic.ranged_spell.instant.blue",
-                "effectProperties": {
-                    "source": "$targets[0].position",
-                    "destination": "$targets[1].position",
-                    "copies": "$targets[1].count"
-                }
+    "expelliarmus_(entwaffnen)":{
+        "name":"Expelliarmus (entwaffnen)",
+        "minTargets":1,
+        "maxTargets":1,
+        "thumbnail":"Generic/Impact/Impact_04_Regular_Blue_Thumb.webp",
+        "replicate":"all",
+        "copy":-1,
+        "parameters":[],
+        "blueprints":[{
+            "id":"generic.impact.blue.4",
+            "attachedTo":"$targets[0].id",
+            "loops":1,
+            "type":"effect",
+            "effectProperties":{
+                "source":"$targets[0].position",
+                "size":"$targets[0].size"
             }
-        ]
+        }]
     },
     "expelliarmus_(stoßen)": {
         "name": "Expelliarmus (stoßen)",
         "minTargets": 2,
-        "thumbnail": "Generic/Weapon_Attacks/Ranged/Missile01_01_Regular_Blue_Thumb.webp",
+        "maxTargets": 2,
+        "thumbnail": "Generic/RangedSpell/03/RangedInstant03_01_Regular_BlueGreen_Thumb.webp",
         "replicate": "first_to_all",
         "copy": 200,
         "parameters": [],
@@ -558,7 +559,6 @@
                 "type": "effect",
                 "id": "generic.conditions.curses.3",
                 "attachedTo": "$targets[0].id",
-                "layer": "PROP",
                 "duration": -1,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -570,14 +570,14 @@
     "reparo": {
         "name": "Reparo",
         "minTargets": 1,
-        "thumbnail": "Generic/Magic_Signs/Transmutation_01_Regular_Yellow_Circle_Thumb.webp",
+        "thumbnail": "Generic/Magic_Signs/IllusionCircleLoop_02_Regular_Purple_Thumb.webp",
         "replicate": "all",
         "copy": -1,
         "parameters": [],
         "blueprints": [
             {
                 "type": "effect",
-                "id": "generic.magic_signs.transmutation_circle.regular_yellow.simple",
+                "id": "generic.magic_signs.illusion_circle.regular_purple.complete",
                 "effectProperties": {
                     "source": "$targets[0].position",
                     "size": "$targets[0].size"
@@ -587,7 +587,8 @@
     },
     "epoximise": {
         "name": "Epoximise",
-        "minTargets": 1,
+        "minTargets": 2,
+        "maxTargets": 2,
         "thumbnail": "Generic/Marker/MarkerChainStandard01_01_Regular_Red_Loop_Thumb.webp",
         "replicate": "all",
         "copy": -1,
@@ -597,7 +598,6 @@
                 "type": "effect",
                 "id": "generic.marker.red_chain_ground",
                 "attachedTo": "$targets[0].id",
-                "layer": "PROP",
                 "duration": -1,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -643,9 +643,10 @@
                 "name": "Radius (in cells)",
                 "id": "radius",
                 "type": "number",
-                "defaultValue": 3,
+                "defaultValue": 5,
                 "content": {
-                    "min": 1
+                    "min": 1,
+                    "max": 10
                 }
             }
         ],
@@ -653,10 +654,13 @@
             {
                 "type": "effect",
                 "id": "fog_cloud.transparent",
-                "duration": 5000,
+                "duration": -1,
                 "effectProperties": {
                     "source": "$targets[0].position",
-                    "size": "$radius"
+                    "size":{
+                        "name": "divide",
+                        "arguments":["$radius", 2]
+                    }
                 }
             }
         ]
@@ -693,7 +697,7 @@
     "serpensortia": {
         "name": "Serpensortia",
         "minTargets": 1,
-        "thumbnail": "Generic/Creature/Snake_01_Regular_Green_Thumb.webp",
+        "thumbnail": "Generic/Eyes/Eyes_Single01_01_Dark_Green_Thumb.webp",
         "replicate": "all",
         "copy": -1,
         "parameters": [],
@@ -711,7 +715,7 @@
             },
             {
                 "type": "effect",
-                "id": "generic.smoke.puff_ring",
+                "id": "generic.eyes.single",
                 "delay": 1500,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -732,8 +736,7 @@
                 "type": "effect",
                 "id": "generic.conditions.curses.4",
                 "attachedTo": "$targets[0].id",
-                "layer": "PROP",
-                "duration": 5000,
+                "duration": -1,
                 "effectProperties": {
                     "source": "$targets[0].position",
                     "size": "$targets[0].size"
@@ -752,9 +755,10 @@
                 "name": "Radius (in cells)",
                 "id": "radius",
                 "type": "number",
-                "defaultValue": 3,
+                "defaultValue": 5,
                 "content": {
-                    "min": 1
+                    "min": 1,
+                    "max": 10
                 }
             }
         ],
@@ -764,7 +768,10 @@
                 "id": "generic.impact.water",
                 "effectProperties": {
                     "source": "$targets[0].position",
-                    "size": "$radius"
+                    "size":{
+                        "name": "divide",
+                        "arguments":["$radius", 2]
+                    }
                 }
             }
         ]
@@ -784,7 +791,7 @@
                     "source": "$targets[0].position",
                     "size": {
                         "name": "product",
-                        "arguments": [1.5, "$targets[0].size"]
+                        "arguments": [2, "$targets[0].size"]
                     }
                 }
             },
@@ -800,7 +807,7 @@
                     "source": "$targets[0].position",
                     "size": {
                         "name": "product",
-                        "arguments": [1.5, "$targets[0].size"]
+                        "arguments": [2, "$targets[0].size"]
                     }
                 }
             }
@@ -816,43 +823,55 @@
             }
         ]
     },
-    "rictusempra": {
-        "name": "Rictusempra",
-        "minTargets": 2,
-        "thumbnail": "Generic/Weapon_Attacks/Ranged/Missile01_01_Regular_Blue_Thumb.webp",
-        "replicate": "first_to_all",
-        "copy": 200,
-        "parameters": [],
-        "blueprints": [
-            {
-                "type": "effect",
-                "id": "generic.ranged_spell.instant.blue",
-                "effectProperties": {
-                    "source": "$targets[0].position",
-                    "destination": "$targets[1].position",
-                    "copies": "$targets[1].count"
+    "rictusempra":{
+        "name":"Rictusempra",
+        "thumbnail":"Generic/Particles/ParticleBurstCircle01_01_Regular_BluePurple_Thumb.webp",
+        "minTargets":2,
+        "maxTargets":2,
+        "replicate":"first_to_all",
+        "copy":200,
+        "parameters":[],
+        "blueprints":[{
+            "id":"generic.ranged_spell.card",
+            "type":"effect",
+            "effectProperties":{
+                "source":"$targets[0].position",
+                "destination":"$targets[1].position",
+                "copies":"$targets[1].count"
+            }
+        },
+        {
+            "id":"generic.particles.burst.circle",
+            "attachedTo":"$targets[1].id",
+            "layer":"ATTACHMENT",
+            "type":"effect",
+            "effectProperties":{
+                "source":"$targets[1].position",
+                "size":{
+                    "name":"product",
+                    "arguments":["$targets[1].size",2]
                 }
             }
-        ]
+        }]
     },
-    "steleus": {
-        "name": "Steleus",
-        "minTargets": 2,
-        "thumbnail": "Generic/Weapon_Attacks/Ranged/Missile01_01_Regular_Blue_Thumb.webp",
-        "replicate": "first_to_all",
-        "copy": 200,
-        "parameters": [],
-        "blueprints": [
-            {
-                "type": "effect",
-                "id": "generic.ranged_spell.instant.blue",
-                "effectProperties": {
-                    "source": "$targets[0].position",
-                    "destination": "$targets[1].position",
-                    "copies": "$targets[1].count"
-                }
+    "steleus":{
+        "name":"Steleus",
+        "minTargets":1,
+        "maxTargets":1,
+        "replicate":"all",
+        "copy":-1,
+        "blueprints":[{
+            "id":"generic.conditions.curses.16",
+            "attachedTo":"$targets[0].id",
+            "duration":5000,
+            "type":"effect",
+            "effectProperties":{
+                "source":"$targets[0].position",
+                "size":"$targets[0].size"
             }
-        ]
+        }],
+        "parameters":[],
+        "thumbnail":"Generic/Conditions/Curse01/ConditionCurse01_016_Red_Thumb.webp"
     },
     "finestra": {
         "name": "Finestra",
@@ -875,7 +894,7 @@
     "vera_verto": {
         "name": "Vera Verto",
         "minTargets": 1,
-        "thumbnail": "Generic/Magic_Signs/Transmutation_01_Regular_Yellow_Circle_Thumb.webp",
+        "thumbnail": "Generic/Magic_Signs/NecromancyCircleLoop_02_Regular_Green_Thumb.webp",
         "replicate": "all",
         "copy": -1,
         "parameters": [
@@ -893,7 +912,7 @@
         "blueprints": [
             {
                 "type": "effect",
-                "id": "generic.magic_signs.transmutation_circle.regular_yellow.complete",
+                "id": "generic.magic_signs.necromancy_circle.regular_green.complete",
                 "effectProperties": {
                     "source": "$targets[0].position",
                     "size": "$targets[0].size"
