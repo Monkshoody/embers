@@ -2,14 +2,15 @@
     "alohomora": {
         "name": "Alohomora (Maxima)",
         "minTargets": 1,
-        "thumbnail": "Generic/Magic_Signs/Abjuration_01_Blue_Circle_Thumb.webp",
+        "maxTargets": 1,
+        "thumbnail": "Generic/Magic_Signs/ConjurationCircleLoop_02_Dark_Yellow_Thumb.webp",
         "replicate": "all",
         "copy": -1,
         "parameters": [],
         "blueprints": [
             {
                 "type": "effect",
-                "id": "generic.magic_signs.abjuration_circle.regular_blue.complete",
+                "id": "generic.magic_signs.conjuration_circle.dark_yellow.complete",
                 "effectProperties": {
                     "source": "$targets[0].position",
                     "size":{
@@ -23,6 +24,7 @@
     "colovaria": {
         "name": "Colovaria",
         "minTargets": 1,
+        "maxTargets": 1,
         "thumbnail": "Generic/Marker/Marker_01_Regular_BlueYellow_Thumb.webp",
         "replicate": "all",
         "copy": -1,
@@ -59,7 +61,8 @@
     "flintifors": {
         "name": "Flintifors",
         "minTargets": 1,
-        "thumbnail": "Generic/Magic_Signs/Transmutation_01_Regular_Yellow_Circle_Thumb.webp",
+        "maxTargets": 1,
+        "thumbnail": "Generic/Magic_Signs/TransmutationCircleLoop_02_Regular_Yellow_Thumb.webp",
         "replicate": "all",
         "copy": -1,
         "parameters": [],
@@ -86,6 +89,7 @@
     "point_me": {
         "name": "Point me",
         "minTargets": 1,
+        "maxTargets": 1,
         "thumbnail": "Generic/UI/Indicator_01_Regular_Yellow_Thumb.webp",
         "replicate": "all",
         "copy": -1,
@@ -133,7 +137,8 @@
     "lumos": {
         "name": "Lumos (Maxima)",
         "minTargets": 1,
-        "thumbnail": "Generic/Marker/MarkerLight_01_Regular_Blue_Thumb.webp",
+        "maxTargets": 1,
+        "thumbnail": "Generic/Marker/MarkerLightOrbComplete_01_Regular_Blue_Thumb.webp",
         "replicate": "all",
         "copy": -1,
         "parameters": [
@@ -147,9 +152,10 @@
         "blueprints": [
             {
                 "type": "effect",
-                "id": "generic.marker.light.complete",
+                "id": "generic.marker.light_orb.complete",
                 "duration": -1,
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "metadata": {
                     "name": "if",
                     "arguments": [
@@ -175,14 +181,15 @@
     "periculum": {
         "name": "Periculum",
         "minTargets": 2,
-        "thumbnail": "Generic/RangedSpell/02/RangedInstant02_01_Regular_Yellow_Thumb.webp",
+        "maxTargets": 2,
+        "thumbnail": "Generic/RangedSpell/01/RangedInstant01_01_Dark_Orange_Thumb.webp",
         "replicate": "first_to_all",
         "copy": 200,
         "parameters": [],
         "blueprints": [
             {
                 "type": "effect",
-                "id": "generic.ranged_spell.instant.yellow",
+                "id": "generic.ranged_spell.instant.dark_orange",
                 "effectProperties": {
                     "source": "$targets[0].position",
                     "destination": "$targets[1].position",
@@ -223,17 +230,21 @@
     "tergeo": {
         "name": "Tergeo",
         "minTargets": 1,
-        "thumbnail": "Generic/Energy/EnergyStrand_Multiple02_Regular_BluePink_Thumb.webp",
+        "maxTargets": 1,
+        "thumbnail": "Generic/Energy/EnergyStrandIN01_03_Regular_Green_Thumb.webp",
         "replicate": "all",
         "copy": -1,
         "parameters": [],
         "blueprints": [
             {
                 "type": "effect",
-                "id": "generic.energy.energy_strand.multiple.blue_pink",
+                "id": "generic.energy.energy_strand.in.3",
                 "effectProperties": {
                     "source": "$targets[0].position",
-                    "size": "$targets[0].size"
+                    "size": {
+                        "name": "product",
+                        "arguments": ["$targets[0].size",10]
+                    }
                 }
             }
         ]
@@ -241,7 +252,8 @@
     "wingardium_leviosa": {
         "name": "Wingardium Leviosa",
         "minTargets": 1,
-        "thumbnail": "Generic/Weapon_Attacks/Ranged/Missile01_01_Regular_Blue_Thumb.webp",
+        "maxTargets": 1,
+        "thumbnail": "Generic/Creature/FairiesInwardBurst01_01_Regular_BluePurple_Thumb.webp",
         "replicate": "all",
         "copy": -1,
         "parameters": [
@@ -258,9 +270,10 @@
         "blueprints": [
             {
                 "type": "effect",
-                "id": "generic.energy.energy_strand.multiple.blue_pink",
-                "duration": -1,
+                "id": "generic.creature.fairies.inward_burst",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
+                "loops": 1,
                 "effectProperties": {
                     "source": "$targets[0].position",
                     "size": "$targets[0].size"
@@ -271,6 +284,7 @@
     "calvario": {
         "name": "Calvario",
         "minTargets": 1,
+        "maxTargets": 1,
         "thumbnail": "Generic/Conditions/Curse01/ConditionCurse01_001_Red_Thumb.webp",
         "replicate": "all",
         "copy": -1,
@@ -280,7 +294,8 @@
                 "type": "effect",
                 "id": "generic.conditions.curses.1",
                 "attachedTo": "$targets[0].id",
-                "duration": -1,
+                "layer": "PROP",
+                "loops": 2,
                 "effectProperties": {
                     "source": "$targets[0].position",
                     "size": "$targets[0].size"
@@ -291,6 +306,7 @@
     "finite_incantatem": {
         "name": "Finite Incantatem",
         "minTargets": 1,
+        "maxTargets": 1,
         "thumbnail": "Generic/Magic_Signs/Abjuration_01_Blue_Circle_Thumb.webp",
         "replicate": "all",
         "copy": -1,
@@ -312,6 +328,7 @@
     "locomotor_mortis": {
         "name": "Locomotor Mortis",
         "minTargets": 1,
+        "maxTargets": 1,
         "thumbnail": "Generic/Marker/MarkerChainStandard01_02_Regular_Red_Complete_Thumb.webp",
         "replicate": "all",
         "copy": -1,
@@ -321,6 +338,7 @@
                 "type": "effect",
                 "id": "generic.marker.red_chain.complete",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "effectProperties": {
                     "source": "$targets[0].position",
                     "size": "$targets[0].size"
@@ -330,8 +348,9 @@
                 "type": "effect",
                 "id": "generic.marker.red_chain.loop",
                 "delay": 350,
-                "duration": -1,
+                "duration": 1800,
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "disableHit": true,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -352,6 +371,7 @@
                 "type": "effect",
                 "id": "generic.marker.spectral_chain.complete",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "effectProperties": {
                     "source": "$targets[0].position",
                     "size": "$targets[0].size"
@@ -363,6 +383,7 @@
                 "delay": 350,
                 "duration": -1,
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "disableHit": true,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -374,15 +395,17 @@
     "slugulus_erecto_(schluck_schnecken)": {
         "name": "Slugulus Erecto (Schluck Schnecken)",
         "minTargets": 1,
-        "thumbnail": "Generic/Conditions/Curse01/ConditionCurse01_002_Red_Thumb.webp",
+        "maxTargets": 1,
+        "thumbnail": "Generic/Conditions/Curse01/ConditionCurse01_006_Red_Thumb.webp",
         "replicate": "all",
         "copy": -1,
         "parameters": [],
         "blueprints": [
             {
                 "type": "effect",
-                "id": "generic.conditions.curses.2",
+                "id": "generic.conditions.curses.6",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": 5000,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -406,7 +429,8 @@
                 "type": "number",
                 "defaultValue": 5,
                 "content": {
-                    "min": 1
+                    "min": 1,
+                    "max": 15
                 }
             }
         ],
@@ -415,75 +439,64 @@
                 "type": "effect",
                 "id": "gust_of_wind",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "effectProperties": {
                     "source": "$targets[0].position",
                     "rotation": {
                         "name": "rotation",
                         "arguments": ["$targets[0].position", "$targets[1].position"]
                     },
-                    "size": "$length"
+                    "size":{
+                        "name": "divide",
+                        "arguments": ["$length",5]
+                    }
                 }
             }
         ]
     },
     "devicto": {
         "name": "Devicto",
-        "minTargets": 2,
-        "thumbnail": "Generic/Weapon_Attacks/Ranged/Missile01_01_Regular_Blue_Thumb.webp",
-        "replicate": "first_to_all",
-        "copy": 200,
+        "minTargets": 1,
+        "maxTargets": 1,
+        "thumbnail": "Generic/Butterflies/Butterflies_01_Regular_Orange_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
         "parameters": [],
-        "blueprints": [
-            {
-                "type": "effect",
-                "id": "generic.ranged_spell.instant.blue",
-                "effectProperties": {
-                    "source": "$targets[0].position",
-                    "destination": "$targets[1].position",
-                    "copies": "$targets[1].count"
-                }
+        "blueprints": [{
+            "type": "effect",
+            "id": "generic.butterflies.idle.many",
+            "attachedTo": "$targets[0].id",
+            "layer": "PROP",
+            "duration": -1,
+            "effectProperties": {
+                "source": "$targets[0].position",
+                "size": "$targets[0].size"
             }
-        ]
+        }]
     },
     "verdimillious": {
         "name": "Verdimillious (Maxima)",
-        "minTargets": 2,
-        "thumbnail": "Generic/Energy/EnergyBeam_01_Regular_Blue_Thumb.webp",
-        "replicate": "first_to_all",
-        "copy": 200,
-        "parameters": [
-            {
-                "name": "Color",
-                "id": "color",
-                "type": "options",
-                "defaultValue": "green",
-                "content": [
-                    { "value": "green", "label": "Green" },
-                    { "value": "blue", "label": "Blue" }
-                ]
-            }
-        ],
-        "blueprints": [
-            {
-                "type": "effect",
-                "id": {
-                    "name": "if",
-                    "arguments": [
-                        {
-                            "name": "equals",
-                            "arguments": ["$color", "green"]
-                        },
-                        "verdimillious",
-                        "generic.energy.energy_beam.blue"
-                    ]
-                },
-                "effectProperties": {
-                    "source": "$targets[0].position",
-                    "destination": "$targets[1].position",
-                    "copies": "$targets[1].count"
+        "minTargets" :1,
+        "maxTargets" :1,
+        "thumbnail": "Generic/Lightning/StaticElectricity_03_Regular_Blue_Thumb.webp",
+        "replicate": "all",
+        "copy": -1,
+        "parameters": [],
+        "blueprints": [{
+            "type": "effect",
+            "id": "generic.lightning.static_electricity.3.green",
+            "attachedTo": "$targets[0].id",
+            "layer": "PROP",
+            "duration": 5000,
+            "effectProperties": {
+                "source": "$targets[0].position",
+                "size": {
+                    "name": "product",
+                    "arguments": ["$targets[0].size",4]
                 }
             }
-        ]
+        }]
+        
     },
     "expelliarmus_(entwaffnen)": {
         "name": "Expelliarmus (entwaffnen)",
@@ -553,6 +566,7 @@
                 "type": "effect",
                 "id": "generic.conditions.curses.3",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": -1,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -591,6 +605,7 @@
                 "type": "effect",
                 "id": "generic.marker.red_chain_ground",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": -1,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -725,6 +740,7 @@
                 "type": "effect",
                 "id": "generic.conditions.curses.4",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": 5000,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -786,6 +802,7 @@
                 "delay": 1100,
                 "duration": -1,
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "disableHit": true,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -913,6 +930,7 @@
                 "type": "effect",
                 "id": "generic.marker.spectral_chain.complete",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "effectProperties": {
                     "source": "$targets[0].position",
                     "size": "$targets[0].size"
@@ -924,6 +942,7 @@
                 "delay": 350,
                 "duration": -1,
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "disableHit": true,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -952,6 +971,7 @@
                 "id": "generic.marker.light.complete",
                 "duration": -1,
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "metadata": {
                     "name": "if",
                     "arguments": [
@@ -1070,6 +1090,7 @@
                 "id": "generic.energy.energy_strand.multiple.blue_pink",
                 "duration": -1,
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "effectProperties": {
                     "source": "$targets[0].position",
                     "size": "$targets[0].size"
@@ -1153,6 +1174,7 @@
                 "delay": 6000,
                 "duration": -1,
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "effectProperties": {
                     "source": "$targets[0].position",
                     "size": "$targets[0].size"
@@ -1181,6 +1203,7 @@
                 "id": "generic.marker.simple.green.complete",
                 "delay": 1000,
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": -1,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -1239,6 +1262,7 @@
                 "type": "effect",
                 "id": "generic.conditions.curses.5",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": -1,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -1259,6 +1283,7 @@
                 "type": "effect",
                 "id": "generic.marker.shield.1",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": -1,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -1279,6 +1304,7 @@
                 "type": "effect",
                 "id": "generic.marker.spectral_chain.complete",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "effectProperties": {
                     "source": "$targets[0].position",
                     "size": "$targets[0].size"
@@ -1290,6 +1316,7 @@
                 "delay": 350,
                 "duration": -1,
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "disableHit": true,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -1412,6 +1439,7 @@
                 "type": "effect",
                 "id": "generic.conditions.curses.6",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": -1,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -1432,6 +1460,7 @@
                 "type": "effect",
                 "id": "generic.marker.red_chain_ground",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": -1,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -1452,6 +1481,7 @@
                 "type": "effect",
                 "id": "generic.ui.indicator.single.3",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": -1,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -1472,6 +1502,7 @@
                 "type": "effect",
                 "id": "generic.conditions.boons.1",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": -1,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -1492,6 +1523,7 @@
                 "type": "effect",
                 "id": "generic.conditions.curses.7",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": -1,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -1544,6 +1576,7 @@
                 "type": "effect",
                 "id": "generic.conditions.curses.8",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": -1,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -1564,6 +1597,7 @@
                 "type": "effect",
                 "id": "generic.conditions.curses.9",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": 5000,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -1614,6 +1648,7 @@
                 "type": "effect",
                 "id": "generic.music_notation.quaver",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": 5000,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -1625,6 +1660,7 @@
                 "id": "generic.music_notation.beamed_quavers",
                 "delay": 1000,
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": 4000,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -1683,6 +1719,7 @@
                 "type": "effect",
                 "id": "generic.marker.mute.1",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": 3000,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -1703,6 +1740,7 @@
                 "type": "effect",
                 "id": "generic.marker.red_chain.complete",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": -1,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -1715,6 +1753,7 @@
                 "delay": 350,
                 "duration": -1,
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "disableHit": true,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -1735,6 +1774,7 @@
                 "type": "effect",
                 "id": "generic.ui.indicator.single.3",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": -1,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -1755,6 +1795,7 @@
                 "type": "effect",
                 "id": "generic.music_notation.treble_clef",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": 5000,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -1909,6 +1950,7 @@
                 "type": "effect",
                 "id": "generic.marker.red_chain.complete",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "effectProperties": {
                     "source": "$targets[0].position",
                     "size": "$targets[0].size"
@@ -1920,6 +1962,7 @@
                 "delay": 350,
                 "duration": -1,
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "disableHit": true,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -1958,6 +2001,7 @@
                 "type": "effect",
                 "id": "generic.conditions.curses.10",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": 5000,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -1978,6 +2022,7 @@
                 "type": "effect",
                 "id": "generic.conditions.curses.11",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": 5000,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -1998,6 +2043,7 @@
                 "type": "effect",
                 "id": "generic.marker.spectral_chain.complete",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "effectProperties": {
                     "source": "$targets[0].position",
                     "size": "$targets[0].size"
@@ -2009,6 +2055,7 @@
                 "delay": 350,
                 "duration": -1,
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "disableHit": true,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -2029,6 +2076,7 @@
                 "type": "effect",
                 "id": "generic.conditions.curses.12",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": 5000,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -2049,6 +2097,7 @@
                 "type": "effect",
                 "id": "generic.marker.default",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": -1,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -2223,6 +2272,7 @@
                 "type": "effect",
                 "id": "generic.conditions.curses.13",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": 3000,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -2243,6 +2293,7 @@
                 "type": "effect",
                 "id": "generic.marker.default",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": -1,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -2290,6 +2341,7 @@
                 "id": "generic.marker.simple.green.complete",
                 "delay": 500,
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": 3000,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -2343,6 +2395,7 @@
                 "type": "effect",
                 "id": "gust_of_wind",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "effectProperties": {
                     "source": "$targets[0].position",
                     "rotation": {
@@ -2366,6 +2419,7 @@
                 "type": "effect",
                 "id": "generic.marker.default",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": -1,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -2523,6 +2577,7 @@
                 "delay": 1100,
                 "duration": -1,
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "disableHit": true,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -2556,6 +2611,7 @@
                 "type": "effect",
                 "id": "generic.marker.red_chain_ground",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": -1,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -2589,6 +2645,7 @@
                 "delay": 2000,
                 "duration": -1,
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "effectProperties": {
                     "source": "$targets[0].position",
                     "size": "$targets[0].size"
@@ -2637,6 +2694,7 @@
                 "type": "effect",
                 "id": "generic.marker.bubble.big.complete",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": -1,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -2651,6 +2709,7 @@
                 "id": "generic.marker.bubble.big.loop",
                 "delay": 1000,
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": -1,
                 "disableHit": true,
                 "effectProperties": {
@@ -2675,6 +2734,7 @@
                 "type": "effect",
                 "id": "generic.marker.mute.1",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": -1,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -2828,6 +2888,7 @@
                 "type": "effect",
                 "id": "generic.music_notation.treble_clef",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": 5000,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -2885,6 +2946,7 @@
                 "type": "effect",
                 "id": "generic.conditions.curses.14",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": -1,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -2925,6 +2987,7 @@
                 "delay": 1100,
                 "duration": -1,
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "disableHit": true,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -3018,6 +3081,7 @@
                 "id": "generic.energy.energy_strand.multiple.purple",
                 "delay": 1000,
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": -1,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -3092,6 +3156,7 @@
                 "type": "effect",
                 "id": "generic.conditions.curses.15",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": 5000,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -3218,6 +3283,7 @@
                 "type": "effect",
                 "id": "generic.marker.shield.1",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": -1,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -3238,6 +3304,7 @@
                 "type": "effect",
                 "id": "generic.marker.shield_cracked.1",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": -1,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -3258,6 +3325,7 @@
                 "type": "effect",
                 "id": "generic.marker.shield_cracked.2",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": 5000,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -3278,6 +3346,7 @@
                 "type": "effect",
                 "id": "generic.marker.shield.2",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": 5000,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -3298,6 +3367,7 @@
                 "type": "effect",
                 "id": "generic.conditions.curses.16",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": 5000,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -3365,6 +3435,7 @@
                 "delay": 6000,
                 "duration": -1,
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "effectProperties": {
                     "source": "$targets[0].position",
                     "size": "$targets[0].size"
@@ -3588,6 +3659,7 @@
                 "type": "effect",
                 "id": "generic.marker.bubble.big.complete",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "effectProperties": {
                     "source": "$targets[0].position",
                     "size": "$radius"
@@ -3598,6 +3670,7 @@
                 "id": "generic.marker.bubble.big.loop",
                 "delay": 1000,
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": -1,
                 "disableHit": true,
                 "effectProperties": {
@@ -3751,6 +3824,7 @@
                 "type": "effect",
                 "id": "generic.conditions.curses.17",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": 5000,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -3771,6 +3845,7 @@
                 "type": "effect",
                 "id": "generic.conditions.curses.18",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": -1,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -3809,6 +3884,7 @@
                 "type": "effect",
                 "id": "generic.conditions.boons.2",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": 5000,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -3829,6 +3905,7 @@
                 "type": "effect",
                 "id": "generic.conditions.curses.19",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": 5000,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -4049,6 +4126,7 @@
                 "id": "generic.energy.energy_strand.multiple.purple",
                 "delay": 1000,
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": -1,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -4146,6 +4224,7 @@
                 "type": "effect",
                 "id": "generic.conditions.curses.20",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": 5000,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -4540,6 +4619,7 @@
                 "type": "effect",
                 "id": "cone_of_cold",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "effectProperties": {
                     "source": "$targets[0].position",
                     "rotation": {
@@ -4641,6 +4721,7 @@
                 "type": "effect",
                 "id": "generic.marker.shield.3",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": -1,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -4719,6 +4800,7 @@
                 "type": "effect",
                 "id": "generic.conditions.boons.3",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": 5000,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -4739,6 +4821,7 @@
                 "type": "effect",
                 "id": "generic.conditions.curses.1",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": 5000,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -4777,6 +4860,7 @@
                 "type": "effect",
                 "id": "generic.marker.shield.1",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": -1,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -4797,6 +4881,7 @@
                 "type": "effect",
                 "id": "generic.marker.shield.2",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": -1,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -4817,6 +4902,7 @@
                 "type": "effect",
                 "id": "generic.marker.shield.3",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": -1,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -4895,6 +4981,7 @@
                 "type": "effect",
                 "id": "generic.conditions.curses.2",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": 5000,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -5233,6 +5320,7 @@
                 "id": "antilife_shell.circle",
                 "duration": -1,
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "effectProperties": {
                     "source": "$targets[0].position",
                     "size": {
@@ -5400,6 +5488,7 @@
                 "type": "effect",
                 "id": "generic.conditions.curses.5",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": 5000,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -5420,6 +5509,7 @@
                 "type": "effect",
                 "id": "generic.conditions.curses.6",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": 3000,
                 "effectProperties": {
                     "source": "$targets[0].position",
@@ -5440,6 +5530,7 @@
                 "type": "effect",
                 "id": "generic.conditions.curses.7",
                 "attachedTo": "$targets[0].id",
+                "layer": "PROP",
                 "duration": 5000,
                 "effectProperties": {
                     "source": "$targets[0].position",
