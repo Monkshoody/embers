@@ -3,14 +3,13 @@ import { defineConfig } from "vite";
 import raw from "vite-plugin-raw";
 import react from "@vitejs/plugin-react";
 
+import { cloudflare } from "@cloudflare/vite-plugin";
+
 // https://vite.dev/config/
 export default defineConfig({
-    plugins: [
-        react(),
-        raw({
-            match: /\.frag$/,
-        })
-    ],
+    plugins: [react(), raw({
+        match: /\.frag$/,
+    }), cloudflare()],
     server: {
         headers: {
             "Cache-Control": "public, max-age=60"
