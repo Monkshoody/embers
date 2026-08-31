@@ -227,7 +227,7 @@ export default function SpellDetails() {
     }, [obr.ready, obr.player?.role, isGM]);
 
     useEffect(() => {
-    fetch("https://hogwartsshops.pages.dev/spells.json")
+    fetch("https://hogwartsshops.pages.dev/ressources/spells.json")
         .then((res) => res.json())
         .then(setAllSpells);
     }, []);
